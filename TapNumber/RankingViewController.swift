@@ -20,12 +20,36 @@ class RankingViewController: UIViewController {
     
     var newArray = [Int]()
     
+    let saveScore: UserDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-//        newArray = saveScore.object(forKey: "score")
+        newArray = saveScore.object(forKey:"score") as! [Int]
+        newArray.sort { $1 < $0 }
+        
+        print(newArray)
+        
+        if newArray.count >= 1{
+            FirstScore = newArray[0]
+            if newArray.count >= 2{
+                SecondScore = newArray[1]
+                if newArray.count >= 3{
+                    ThirdScore = newArray[2]
+                    
+                }
+            }
+        }
+        
+        FirstLabel.text = String(FirstScore) + "点"
+        SecondLabel.text = String(SecondScore) + "点"
+        ThirdLabel.text = String(ThirdScore) + "点"
+    }
+    
+    func push(){
+        
     }
     
 

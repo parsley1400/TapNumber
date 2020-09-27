@@ -23,8 +23,13 @@ class ResultViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         resultLabel.text = String(score) + "点"
+        if saveScore.object(forKey:"boolean") as? Bool == true{
+        scoreArray = saveScore.object(forKey:"score") as! [Int]
+        }
         scoreArray.append(score)
         saveScore.set(scoreArray, forKey:"score")
+        saveScore.set(true, forKey:"boolean")
+        scoreArray = saveScore.object(forKey:"score") as! [Int]
     }
     
     @IBAction func back(){
